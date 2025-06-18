@@ -19,6 +19,80 @@ type Project =
           technologies?: string[];
       };
 
+interface ProjectCardProps {
+    project: Project;
+}
+
+function ProjectCard({ project }: ProjectCardProps) {
+    const hasImage = "image" in project;
+
+    return (
+        <article className="bg-gray-800/70 hover:bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-colors flex flex-col">
+            {hasImage && (
+                <div className="relative w-full aspect-[1200/630]">
+                    <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+            )}
+            <div className={"h-full p-4 lg:p-6 flex flex-col"}>
+                <header className="flex items-center justify-between">
+                    <h3 className="text-base lg:text-lg font-medium text-gray-100">
+                        {project.title}
+                    </h3>
+                    <span className="text-xs lg:text-sm text-forest-400">
+                        {project.year}
+                    </span>
+                </header>
+                <p className="mt-3 lg:mt-4 text-sm">{project.description}</p>
+                {project.technologies && (
+                    <div className="flex flex-wrap gap-1.5 lg:gap-2 mt-3 lg:mt-4">
+                        {project.technologies.map((tech, i) => (
+                            <span
+                                key={i}
+                                className="px-2 py-0.5 text-xs font-medium bg-forest-400/10 text-forest-400 rounded-full"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                )}
+                <div className={"flex gap-3 lg:gap-4 mt-auto"}>
+                    {project.repoUrl && (
+                        <a
+                            href={project.repoUrl}
+                            target="_blank"
+                            className="mt-3 lg:mt-4 inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
+                        >
+                            View Repo
+                            <i
+                                data-lucide="arrow-right"
+                                className="w-3 h-3 lg:w-4 lg:h-4"
+                            ></i>
+                        </a>
+                    )}
+                    {project.linkUrl && (
+                        <a
+                            href={project.linkUrl}
+                            target="_blank"
+                            className="mt-3 lg:mt-4 inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
+                        >
+                            View Project
+                            <i
+                                data-lucide="arrow-right"
+                                className="w-3 h-3 lg:w-4 lg:h-4"
+                            ></i>
+                        </a>
+                    )}
+                </div>
+            </div>
+        </article>
+    );
+}
+
 export const projects: Project[] = [
     {
         title: "CheckMate",
@@ -63,6 +137,14 @@ export const projects: Project[] = [
         repoUrl: "https://github.com/ZacMelendez/hbdiscord",
         technologies: ["Node.JS", "TypeScript", "Discord.JS"],
     },
+    {
+        title: "Job Scraper",
+        description:
+            "A job scraper that scrapes job listings from several companies which I was hoping to work for and saves them to a database.",
+        year: "2023",
+        repoUrl: "https://github.com/ZacMelendez/job-scraper-ui",
+        technologies: ["Svelte", "TypeScript", "Python"],
+    },
 ];
 
 export function Projects() {
@@ -72,142 +154,23 @@ export function Projects() {
     );
 
     return (
-        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-6 lg:space-y-8 pb-40 md:pb-10">
+        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-4 lg:space-y-6 pb-40 md:pb-10">
             <h2 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight">
                 Projects
             </h2>
             <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
                 {projectsWithImages.map((project, index) => (
-                    <article
-                        key={index}
-                        className="bg-gray-800/70 hover:bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-colors"
-                    >
-                        <div className="relative w-full aspect-[1200/630]">
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="p-4 lg:p-6">
-                            <header className="flex items-center justify-between">
-                                <h3 className="text-base lg:text-lg font-medium text-gray-100">
-                                    {project.title}
-                                </h3>
-                                <span className="text-xs lg:text-sm text-forest-400">
-                                    {project.year}
-                                </span>
-                            </header>
-                            <p className="mt-3 lg:mt-4 text-sm">
-                                {project.description}
-                            </p>
-                            {project.technologies && (
-                                <div className="flex flex-wrap gap-1.5 lg:gap-2 mt-3 lg:mt-4">
-                                    {project.technologies.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-2 py-0.5 text-xs font-medium bg-forest-400/10 text-forest-400 rounded-full"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                            <div className="flex gap-3 lg:gap-4 mt-3 lg:mt-4">
-                                {project.repoUrl && (
-                                    <a
-                                        href={project.repoUrl}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
-                                    >
-                                        View Repo
-                                        <i
-                                            data-lucide="arrow-right"
-                                            className="w-3 h-3 lg:w-4 lg:h-4"
-                                        ></i>
-                                    </a>
-                                )}
-                                {project.linkUrl && (
-                                    <a
-                                        href={project.linkUrl}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
-                                    >
-                                        View Project
-                                        <i
-                                            data-lucide="arrow-right"
-                                            className="w-3 h-3 lg:w-4 lg:h-4"
-                                        ></i>
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                    </article>
+                    <ProjectCard key={index} project={project} />
                 ))}
             </div>
             <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
                 {projectsWithoutImages.map((project, index) => (
-                    <article
-                        key={index}
-                        className="bg-gray-800/70 hover:bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-colors"
-                    >
-                        <div className="p-4 lg:p-6">
-                            <header className="flex items-center justify-between">
-                                <h3 className="text-base lg:text-lg font-medium text-gray-100">
-                                    {project.title}
-                                </h3>
-                                <span className="text-xs lg:text-sm text-forest-400">
-                                    {project.year}
-                                </span>
-                            </header>
-                            <p className="mt-3 lg:mt-4 text-sm">
-                                {project.description}
-                            </p>
-                            {project.technologies && (
-                                <div className="flex flex-wrap gap-1.5 lg:gap-2 mt-3 lg:mt-4">
-                                    {project.technologies.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-2 py-0.5 text-xs font-medium bg-forest-400/10 text-forest-400 rounded-full"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                            <div className="flex gap-3 lg:gap-4 mt-3 lg:mt-4">
-                                {project.repoUrl && (
-                                    <a
-                                        href={project.repoUrl}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
-                                    >
-                                        View Repo
-                                        <i
-                                            data-lucide="arrow-right"
-                                            className="w-3 h-3 lg:w-4 lg:h-4"
-                                        ></i>
-                                    </a>
-                                )}
-                                {project.linkUrl && (
-                                    <a
-                                        href={project.linkUrl}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
-                                    >
-                                        View Project
-                                        <i
-                                            data-lucide="arrow-right"
-                                            className="w-3 h-3 lg:w-4 lg:h-4"
-                                        ></i>
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                    </article>
+                    <ProjectCard key={index} project={project} />
                 ))}
             </div>
+            <p className="text-xs text-gray-500 text-center mt-4 lg:hidden">
+                © {new Date().getFullYear()} Zach Melendez
+            </p>
         </section>
     );
 }

@@ -5,6 +5,7 @@ import { Tabs } from "@/components/tabs";
 import { ReactScan } from "./react-scan";
 import { ViewTransitions } from "next-view-transitions";
 import { Metadata, Viewport } from "next";
+import MobileInfo from "@/components/mobile-info";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,6 +57,8 @@ export default async function RootLayout({
                         >
                             <div className="absolute -top-20 -left-32 w-96 h-96 bg-forest-600/30 blur-3xl rounded-full animate-pulse"></div>
                         </div>
+
+                        <MobileInfo />
 
                         <Tabs />
                         {children}

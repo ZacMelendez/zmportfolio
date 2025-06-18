@@ -13,8 +13,8 @@ export function Tabs() {
     ];
 
     return (
-        <nav className="flex items-center space-x-6 lg:space-x-6 px-6 lg:px-10 py-4 overflow-x-auto">
-            <ZMLogo className="w-6 h-6" />
+        <nav className="flex items-center justify-center lg:justify-start gap-6 lg:gap-8 px-6 lg:px-10 pb-2 lg:py-4 overflow-x-auto backdrop-blur-lg">
+            <ZMLogo className="w-6 h-6 hidden lg:flex" />
             {tabs.map((tab) => (
                 <Link
                     key={tab.id}

@@ -1,6 +1,7 @@
 "use client";
 
 import { Github } from "@/app/logos/Github";
+import { cn } from "@/app/utils";
 import { Mail, FileText, Info, XIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -9,7 +10,7 @@ export function Sidebar() {
 
     return (
         <>
-            <button
+            {/* <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="lg:hidden fixed top-4 right-4 z-50 p-2 rounded-xl transition-all duration-300 group"
                 data-state={isOpen ? "open" : "closed"}
@@ -22,16 +23,13 @@ export function Sidebar() {
                         <XIcon className="h-6 w-6 text-forest-500" />
                     </div>
                 </div>
-            </button>
+            </button> */}
 
             <aside
-                className={`
-                    fixed lg:relative w-[85vw] lg:w-full lg:max-w-sm border-l border-gray-800 
-                    p-6 lg:p-8 flex flex-col lg:h-full bg-gray-900/95 backdrop-blur-lg
-                    transition-all duration-300 ease-in-out z-40 h-full top-0
-                    ${isOpen ? "right-0" : "-right-[85vw]"}
-                    lg:right-0
-                `}
+                className={cn(
+                    "fixed lg:relative w-[85vw] lg:w-full lg:max-w-sm border-l border-gray-800  p-6 lg:p-8 flex flex-col lg:h-full bg-gray-900/95 backdrop-blur-lg transition-all duration-300 ease-in-out z-40 h-full top-0 lg:right-0",
+                    isOpen ? "right-0" : "-right-[85vw]"
+                )}
             >
                 <div className="flex-1 flex flex-col items-center justify-center">
                     <div className="space-y-6 lg:space-y-8 flex flex-col items-center text-center">
@@ -42,7 +40,7 @@ export function Sidebar() {
                                 alt="Portrait of Zach Melendez"
                             />
                             <div className="flex items-center gap-3">
-                                <div className="flex flex-col items-start">
+                                <div className="flex flex-col items-center">
                                     <h2 className="text-xl lg:text-2xl font-semibold text-white tracking-tight">
                                         Zach Melendez
                                     </h2>

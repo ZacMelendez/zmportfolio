@@ -54,7 +54,7 @@ export function About() {
                 <h2 className="text-3xl font-semibold text-white tracking-tight">
                     Hi, I'm Zach - Full-Stack Software Engineer
                 </h2>
-                <div className="leading-relaxed text-gray-300 w-3/4 flex flex-col gap-2">
+                <div className="leading-relaxed text-gray-300 lg:w-3/4 flex flex-col gap-2">
                     <p>
                         I'm a full-stack engineer crafting websites and
                         applications with clean, intuitive designs and
@@ -118,6 +118,9 @@ export function About() {
                 View My Projects
                 <ArrowRight className="w-4 h-4" />
             </Link>
+            <p className="text-xs text-gray-500 text-center mt-4 lg:hidden">
+                © {new Date().getFullYear()} Zach Melendez
+            </p>
         </section>
     );
 }
