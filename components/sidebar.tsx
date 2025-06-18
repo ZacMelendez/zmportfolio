@@ -1,5 +1,14 @@
 import { Github } from "@/app/logos/Github";
 import { Mail, FileText } from "lucide-react";
+import { SocialLink } from "./social-link";
+import { ReactNode } from "react";
+
+interface SocialLinkConfig {
+    href: string;
+    title: string;
+    icon: ReactNode;
+    external?: boolean;
+}
 
 export function Sidebar() {
     return (
@@ -29,29 +38,9 @@ export function Sidebar() {
                     </div>
 
                     <div className="flex gap-3 justify-center">
-                        <a
-                            href="mailto:zach@zmelendez.com"
-                            className="p-2.5 lg:p-3 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-forest-500/50 hover:bg-gray-800/80 transition-all duration-300"
-                            title="Email me"
-                        >
-                            <Mail className="w-4 lg:w-5 h-4 lg:h-5 text-forest-400" />
-                        </a>
-                        <a
-                            href="https://res.cloudinary.com/drmatz1gd/image/upload/v1708753008/public/Zach_M_-_Dev_Resume_dm6eso.pdf"
-                            target="_blank"
-                            className="p-2.5 lg:p-3 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-forest-500/50 hover:bg-gray-800/80 transition-all duration-300"
-                            title="View Resume"
-                        >
-                            <FileText className="w-4 lg:w-5 h-4 lg:h-5 text-forest-400" />
-                        </a>
-                        <a
-                            href="https://github.com/zacmelendez"
-                            target="_blank"
-                            className="p-2.5 lg:p-3 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-forest-500/50 hover:bg-gray-800/80 transition-all duration-300"
-                            title="GitHub Profile"
-                        >
-                            <Github className="w-4 lg:w-5 h-4 lg:h-5 fill-forest-400" />
-                        </a>
+                        {socials.map((link, i) => (
+                            <SocialLink key={i} {...link} />
+                        ))}
                     </div>
                 </div>
             </div>
@@ -61,3 +50,23 @@ export function Sidebar() {
         </aside>
     );
 }
+
+const socials: SocialLinkConfig[] = [
+    {
+        href: "mailto:zach@zmelendez.com",
+        title: "Email me",
+        icon: <Mail className="w-4 lg:w-5 h-4 lg:h-5 text-forest-400" />,
+    },
+    {
+        href: "https://res.cloudinary.com/drmatz1gd/image/upload/v1708753008/public/Zach_M_-_Dev_Resume_dm6eso.pdf",
+        title: "View Resume",
+        icon: <FileText className="w-4 lg:w-5 h-4 lg:h-5 text-forest-400" />,
+        external: true,
+    },
+    {
+        href: "https://github.com/zacmelendez",
+        title: "GitHub Profile",
+        icon: <Github className="w-4 lg:w-5 h-4 lg:h-5 fill-forest-400" />,
+        external: true,
+    },
+];

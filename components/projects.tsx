@@ -1,4 +1,9 @@
+"use client";
+
+import { cn } from "@/app/utils";
+import { useBorderEffect } from "@/app/utils/useBorderEffect";
 import Image from "next/image";
+import { useRef } from "react";
 
 type Project =
     | {
@@ -26,15 +31,45 @@ interface ProjectCardProps {
 function ProjectCard({ project }: ProjectCardProps) {
     const hasImage = "image" in project;
 
+    const sourceRef = useRef<HTMLDivElement>(null);
+    const {
+        handleBlur,
+        handleFocus,
+        handleMouseMove,
+        opacity,
+        position,
+        divRef,
+    } = useBorderEffect();
+
     return (
-        <article className="bg-gray-800/70 hover:bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-colors flex flex-col">
+        <article
+            onMouseMove={handleMouseMove}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            ref={sourceRef}
+            key={project.title}
+            className="bg-gray-800/70 hover:bg-gray-800 rounded-2xl border border-gray-700 flex flex-col relative hover:scale-[1.02] transition-all"
+        >
+            <div
+                ref={divRef}
+                aria-hidden="true"
+                style={{
+                    opacity,
+                    WebkitMaskImage: `radial-gradient(30% 100px at ${position.x}px ${position.y}px, #7f886a 85%, transparent)`,
+                    height: (sourceRef.current?.clientHeight || 0) + 2,
+                    width: (sourceRef.current?.clientWidth || 0) + 2,
+                }}
+                className={
+                    "border-forest-500 pointer-events-none absolute -left-[1px] -top-[1px] z-10 h-12 w-full cursor-default rounded-2xl border-2 bg-none p-3.5 opacity-0 transition-opacity duration-500"
+                }
+            />
             {hasImage && (
-                <div className="relative w-full aspect-[1200/630]">
+                <div className="relative w-full aspect-[1200/630] ">
                     <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover"
+                        className="object-cover rounded-t-2xl overflow-hidden"
                     />
                 </div>
             )}
@@ -159,9 +194,9 @@ export function Projects() {
                 Projects
             </h2>
             {[projectsWithImages, projectsWithoutImages].map((i, j) => (
-                <div className="grid sm:grid-cols-3 gap-4 lg:gap-6">
-                    {i.map((project, index) => (
-                        <ProjectCard key={j + index} project={project} />
+                <div key={j} className="grid sm:grid-cols-3 gap-4 lg:gap-6">
+                    {i.map((project) => (
+                        <ProjectCard key={project.title} project={project} />
                     ))}
                 </div>
             ))}
