@@ -154,7 +154,7 @@ export function Projects() {
     );
 
     return (
-        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-4 lg:space-y-6 pb-40 md:pb-10">
+        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-4 lg:space-y-6 pb-20 md:pb-10">
             <h2 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight">
                 Projects
             </h2>

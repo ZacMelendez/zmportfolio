@@ -49,7 +49,7 @@ const experienceItems: {
 
 export function About() {
     return (
-        <section className="flex-1 overflow-y-auto p-10 space-y-8 pb-40 md:pb-10">
+        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-6 lg:space-y-8 pb-20 md:pb-10">
             <div className="space-y-4">
                 <h2 className="text-3xl font-semibold text-white tracking-tight">
                     Hi, I'm Zach - Full-Stack Software Engineer

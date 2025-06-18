@@ -1,25 +1,42 @@
-import { Github } from "@/app/logos/Github";
-import { FileText, Mail } from "lucide-react";
+"use client";
 
-export default function MobileInfo() {
+import { Github } from "@/app/logos/Github";
+import { cn } from "@/app/utils";
+import { FileText, Mail } from "lucide-react";
+import { memo } from "react";
+
+interface MobileInfoProps {
+    isCollapsed: boolean;
+}
+
+const MobileInfo = memo(function MobileInfo({ isCollapsed }: MobileInfoProps) {
     return (
         <div className="lg:hidden">
-            <div className="bg-gray-900/35 backdrop-blur-lg p-4 m-4 rounded-xl relative flex flex-col transition-all duration-300 ease-in-out">
+            <div
+                className={
+                    "bg-gray-900/35 backdrop-blur-lg p-4 rounded-xl relative flex flex-col"
+                }
+            >
                 <div className="flex items-center gap-4 w-full">
                     <img
                         src="/zach_m.jpg"
-                        className="max-h-24 aspect-square rounded-xl border-2 border-forest-500 shadow-lg object-cover"
+                        className={cn(
+                            "h-20 aspect-square rounded-xl border-2 border-forest-500 shadow-lg object-cover transition-all duration-300 ease-in-out",
+                            isCollapsed && "h-12 rounded-md"
+                        )}
                         alt="Portrait of Zach Melendez"
                     />
-                    <div className="flex items-center gap-3">
-                        <div className="flex flex-col items-start">
-                            <h2 className="text-lg font-semibold text-white tracking-tight">
-                                Zach Melendez
-                            </h2>
-                            <p className="text-sm text-gray-400">
-                                Full-Stack Engineer
-                            </p>
-                            <div className="flex gap-3 justify-center mt-2">
+                    <div className="flex-1 flex items-center gap-3">
+                        <div className="flex flex-row items-center justify-between w-full">
+                            <div className="flex flex-col">
+                                <h2 className="text-lg font-semibold text-white tracking-tight">
+                                    Zach Melendez
+                                </h2>
+                                <p className="text-sm text-gray-400">
+                                    Full-Stack Engineer
+                                </p>
+                            </div>
+                            <div className="flex gap-2 justify-center">
                                 <a
                                     href="mailto:zach@zmelendez.com"
                                     className="p-2"
@@ -50,4 +67,6 @@ export default function MobileInfo() {
             </div>
         </div>
     );
-}
+});
+
+export default MobileInfo;
