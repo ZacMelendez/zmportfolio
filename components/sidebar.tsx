@@ -5,7 +5,7 @@ export function Sidebar() {
     return (
         <aside
             className={
-                "fixed lg:relative w-[85vw] lg:w-full lg:max-w-sm border-l border-gray-800  p-6 lg:p-8 flex flex-col lg:h-full bg-gray-900/95 backdrop-blur-lg transition-all duration-300 ease-in-out z-40 h-full top-0 lg:right-0"
+                "fixed lg:relative w-[85vw] lg:w-full lg:max-w-sm border-l border-gray-800  p-6 lg:p-8 hidden lg:flex flex-col lg:h-full bg-gray-900/95 backdrop-blur-lg transition-all duration-300 ease-in-out z-40 h-full top-0 lg:right-0"
             }
         >
             <div className="flex-1 flex flex-col items-center justify-center">

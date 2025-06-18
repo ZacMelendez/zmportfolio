@@ -3,7 +3,7 @@ import { FileText, Mail } from "lucide-react";
 
 export default function MobileInfo() {
     return (
-        <div className="md:hidden">
+        <div className="lg:hidden">
             <div className="bg-gray-900/35 backdrop-blur-lg p-4 m-4 rounded-xl relative flex flex-col transition-all duration-300 ease-in-out">
                 <div className="flex items-center gap-4 w-full">
                     <img
