@@ -39,7 +39,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                 </div>
             )}
             <div className={"h-full p-4 lg:p-6 flex flex-col"}>
-                <header className="flex items-center justify-between">
+                <header className="flex items-start justify-between">
                     <h3 className="text-base lg:text-lg font-medium text-gray-100">
                         {project.title}
                     </h3>
@@ -158,16 +158,13 @@ export function Projects() {
             <h2 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight">
                 Projects
             </h2>
-            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
-                {projectsWithImages.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
-                ))}
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
-                {projectsWithoutImages.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
-                ))}
-            </div>
+            {[projectsWithImages, projectsWithoutImages].map((i, j) => (
+                <div className="grid sm:grid-cols-3 gap-4 lg:gap-6">
+                    {i.map((project, index) => (
+                        <ProjectCard key={j + index} project={project} />
+                    ))}
+                </div>
+            ))}
             <p className="text-xs text-gray-500 text-center mt-4 lg:hidden">
                 © {new Date().getFullYear()} Zach Melendez
             </p>
