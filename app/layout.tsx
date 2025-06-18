@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://res.cloudinary.com/drmatz1gd/image/upload/v1750215080/zm-og_wukukw.png",
+                url: "https://res.cloudinary.com/drmatz1gd/image/upload/v1750216049/zm-og_qxrequ.png",
             },
         ],
     },
