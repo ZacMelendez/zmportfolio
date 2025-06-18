@@ -8,17 +8,16 @@ A modern, responsive portfolio website built with Next.js 14, featuring a split-
 -   TypeScript
 -   Tailwind CSS
 -   Framer Motion
--   Chart.js
 -   Lucide Icons
 
 ## Features
 
--   🎨 Responsive split-screen layout
--   🌙 Dark UI with glass morphism effects
--   📊 Interactive charts and visualizations
--   ✨ Smooth page transitions and animations
--   ⌨️ Fully keyboard accessible
--   📱 Mobile-friendly design
+-   Responsive split-screen layout
+-   Dark UI with glass morphism effects
+-   Interactive charts and visualizations
+-   Smooth page transitions and animations
+-   Fully keyboard accessible
+-   Mobile-friendly design
 
 ## Getting Started
 

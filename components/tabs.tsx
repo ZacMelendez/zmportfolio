@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { ZMLogo } from "@/app/logos/ZMLogo";
 
 export function Tabs() {
@@ -10,7 +10,6 @@ export function Tabs() {
     const tabs = [
         { id: "about", label: "About", href: "/about" },
         { id: "projects", label: "Projects", href: "/projects" },
-        { id: "skills", label: "Skills", href: "/skills" },
     ];
 
     return (

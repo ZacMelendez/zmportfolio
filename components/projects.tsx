@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-import { Link } from "next-view-transitions";
 import Image from "next/image";
 
 type Project =
@@ -29,7 +27,7 @@ export const projects: Project[] = [
         year: "2025",
         image: "/projects/checkmate.png",
         linkUrl: "https://checkmate-phi.vercel.app/",
-        technologies: ["Next.js", "TypeScript", "Supabase"],
+        technologies: ["Next.JS", "TypeScript", "Supabase"],
     },
     {
         title: "R6 Playbook",
@@ -38,7 +36,7 @@ export const projects: Project[] = [
         year: "2024",
         image: "/projects/r6playbook.png",
         linkUrl: "https://r6playbook.com",
-        technologies: ["Next.js", "TypeScript", "Supabase"],
+        technologies: ["Next.JS", "TypeScript", "Supabase"],
     },
     {
         title: "Peadbo - Personal Advisory Board",
@@ -47,7 +45,7 @@ export const projects: Project[] = [
         year: "2023",
         image: "/projects/peadbo.png",
         linkUrl: "https://peadbo.com",
-        technologies: ["Next.js", "TypeScript", "AWS Amplify"],
+        technologies: ["Next.JS", "TypeScript", "AWS Amplify"],
     },
     {
         title: "American Correctional Association",
@@ -55,7 +53,15 @@ export const projects: Project[] = [
             "The American Correctional Association is a non-profit organization that provides training and certification for correctional professionals.",
         year: "2025",
         linkUrl: "https://acawebsite.vercel.app",
-        technologies: ["Next.js", "TypeScript", "Prismic"],
+        technologies: ["Next.JS", "TypeScript", "Prismic"],
+    },
+    {
+        title: "Crypto Discord Bot",
+        description:
+            "A Discord bot that allowed users to connect their crypto wallets and interact with the bot.",
+        year: "2022",
+        repoUrl: "https://github.com/ZacMelendez/hbdiscord",
+        technologies: ["Node.JS", "TypeScript", "Discord.JS"],
     },
 ];
 
@@ -202,14 +208,6 @@ export function Projects() {
                     </article>
                 ))}
             </div>
-
-            <Link
-                href="/skills"
-                className="justify-end flex items-center gap-2 text-lg text-forest-500 hover:text-forest-400 transition-colors"
-            >
-                View My Tech Stack
-                <ArrowRight className="w-4 h-4" />
-            </Link>
         </section>
     );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import { ZMLogo } from "@/app/logos";
 import { Github } from "@/app/logos/Github";
 import { Mail, FileText, Info, XIcon } from "lucide-react";
 import { useState } from "react";
@@ -43,7 +42,6 @@ export function Sidebar() {
                                 alt="Portrait of Zach Melendez"
                             />
                             <div className="flex items-center gap-3">
-                                <ZMLogo className="w-8 lg:w-10 h-8 lg:h-10" />
                                 <div className="flex flex-col items-start">
                                     <h2 className="text-xl lg:text-2xl font-semibold text-white tracking-tight">
                                         Zach Melendez
