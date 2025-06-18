@@ -1,7 +1,8 @@
 "use client";
 
 import { ZMLogo } from "@/app/logos";
-import { Github, Mail, FileText, Info, XIcon } from "lucide-react";
+import { Github } from "@/app/logos/Github";
+import { Mail, FileText, Info, XIcon } from "lucide-react";
 import { useState } from "react";
 
 export function Sidebar() {
@@ -15,10 +16,10 @@ export function Sidebar() {
                 data-state={isOpen ? "open" : "closed"}
             >
                 <div className="relative h-6 w-6 flex-shrink-0">
-                    <div className="absolute inset-0 transform transition-all duration-300 ease-in-out group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-90 group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0">
+                    <div className="absolute inset-0 transform transition-all duration-300 ease-in-out group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0">
                         <Info className="h-6 w-6 text-forest-500" />
                     </div>
-                    <div className="absolute inset-0 transform transition-all duration-300 ease-in-out group-data-[state=closed]:rotate-90 group-data-[state=open]:rotate-0 group-data-[state=closed]:opacity-0 group-data-[state=open]:opacity-100">
+                    <div className="absolute inset-0 transform transition-all duration-300 ease-in-out group-data-[state=closed]:opacity-0 group-data-[state=open]:opacity-100">
                         <XIcon className="h-6 w-6 text-forest-500" />
                     </div>
                 </div>
@@ -76,7 +77,7 @@ export function Sidebar() {
                                 className="p-2.5 lg:p-3 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-forest-500/50 hover:bg-gray-800/80 transition-all duration-300"
                                 title="GitHub Profile"
                             >
-                                <Github className="w-4 lg:w-5 h-4 lg:h-5 text-forest-400" />
+                                <Github className="w-4 lg:w-5 h-4 lg:h-5 fill-forest-400" />
                             </a>
                         </div>
                     </div>

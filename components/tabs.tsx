@@ -14,7 +14,7 @@ export function Tabs() {
     ];
 
     return (
-        <nav className="flex items-center space-x-6 lg:space-x-6 px-6 lg:px-10 py-4 border-b border-gray-700 overflow-x-auto">
+        <nav className="flex items-center space-x-6 lg:space-x-6 px-6 lg:px-10 py-4 overflow-x-auto">
             <ZMLogo className="w-6 h-6" />
             {tabs.map((tab) => (
                 <Link

@@ -41,6 +41,15 @@ export const projects: Project[] = [
         technologies: ["Next.js", "TypeScript", "Supabase"],
     },
     {
+        title: "Peadbo - Personal Advisory Board",
+        description:
+            "Assemble and manage a dream team to help you achieve your goals.",
+        year: "2023",
+        image: "/projects/peadbo.png",
+        linkUrl: "https://peadbo.com",
+        technologies: ["Next.js", "TypeScript", "AWS Amplify"],
+    },
+    {
         title: "American Correctional Association",
         description:
             "The American Correctional Association is a non-profit organization that provides training and certification for correctional professionals.",
@@ -57,7 +66,7 @@ export function Projects() {
     );
 
     return (
-        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-6 lg:space-y-8">
+        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-6 lg:space-y-8 pb-40 md:pb-10">
             <h2 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight">
                 Projects
             </h2>
