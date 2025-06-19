@@ -2,6 +2,7 @@
 
 import { cn } from "@/app/utils";
 import { useBorderEffect } from "@/app/utils/useBorderEffect";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -100,26 +101,20 @@ function ProjectCard({ project }: ProjectCardProps) {
                         <a
                             href={project.repoUrl}
                             target="_blank"
-                            className="mt-3 lg:mt-4 inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
+                            className="mt-3 lg:mt-4 inline-flex items-center gap-1 lg:gap-2 text-sm text-forest-400 hover:underline group"
                         >
                             View Repo
-                            <i
-                                data-lucide="arrow-right"
-                                className="w-3 h-3 lg:w-4 lg:h-4"
-                            ></i>
+                            <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-in-out" />
                         </a>
                     )}
                     {project.linkUrl && (
                         <a
                             href={project.linkUrl}
                             target="_blank"
-                            className="mt-3 lg:mt-4 inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline"
+                            className="mt-3 lg:mt-4 inline-flex items-center gap-1.5 lg:gap-2 text-sm text-forest-400 hover:underline group"
                         >
                             View Project
-                            <i
-                                data-lucide="arrow-right"
-                                className="w-3 h-3 lg:w-4 lg:h-4"
-                            ></i>
+                            <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-in-out" />
                         </a>
                     )}
                 </div>
