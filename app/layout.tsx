@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://res.cloudinary.com/drmatz1gd/image/upload/v1750216049/zm-og_qxrequ.png",
+                url: "https://res.cloudinary.com/drmatz1gd/image/upload/v1750349730/zm_og_z0eeni.png",
             },
         ],
     },
@@ -37,7 +37,11 @@ export const metadata: Metadata = {
         title: "Zach Melendez - Software Engineer",
         description:
             "Zach is a full stack software engineer, specializing in React, Next.JS, and AWS.",
-        images: [],
+        images: [
+            {
+                url: "https://res.cloudinary.com/drmatz1gd/image/upload/v1750349730/zm_og_z0eeni.png",
+            },
+        ],
     },
 };
 
