@@ -7,6 +7,7 @@ import { Metadata, Viewport } from "next";
 import MobileInfo from "@/components/mobile-info";
 import { Header } from "@/components/header";
 import { CursorGlow } from "./components/cursor-glow";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,7 +53,9 @@ export default async function RootLayout({
                     className={`${inter.className} bg-gray-900 text-gray-300 lg:h-screen lg:overflow-hidden flex flex-col lg:flex-row`}
                 >
                     <div className="flex-1 flex flex-col min-h-0">
-                        <CursorGlow />
+                        <Suspense>
+                            <CursorGlow />
+                        </Suspense>
                         <Header />
                         <div className="mt-48 lg:mt-0 overflow-y-auto z-40">
                             {children}

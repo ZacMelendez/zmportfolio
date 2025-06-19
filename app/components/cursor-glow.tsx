@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 
 export const CursorGlow = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         // Only add mouse tracking on screens larger than mobile
         const mediaQuery = window.matchMedia("(min-width: 1024px)");
-
+        setIsMobile(mediaQuery.matches);
         const updateMousePosition = (e: MouseEvent) => {
             if (mediaQuery.matches) {
                 setMousePosition({ x: e.clientX, y: e.clientY });
@@ -29,7 +30,7 @@ export const CursorGlow = () => {
                 style={{
                     transform: `translate(${
                         // Only apply mouse position on lg screens and up
-                        window.innerWidth >= 1024
+                        isMobile
                             ? `${mousePosition.x - 192}px, ${
                                   mousePosition.y - 192
                               }px`
