@@ -6,6 +6,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { Metadata, Viewport } from "next";
 import MobileInfo from "@/components/mobile-info";
 import { Header } from "@/components/header";
+import { CursorGlow } from "./components/cursor-glow";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,13 +52,7 @@ export default async function RootLayout({
                     className={`${inter.className} bg-gray-900 text-gray-300 lg:h-screen lg:overflow-hidden flex flex-col lg:flex-row`}
                 >
                     <div className="flex-1 flex flex-col min-h-0">
-                        <div
-                            aria-hidden
-                            className="absolute inset-0 pointer-events-none"
-                        >
-                            <div className="absolute -top-20 -left-32 w-96 h-96 bg-forest-600/30 blur-3xl rounded-full animate-pulse"></div>
-                        </div>
-
+                        <CursorGlow />
                         <Header />
                         <div className="mt-48 lg:mt-0 overflow-y-auto z-40">
                             {children}
