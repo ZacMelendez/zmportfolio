@@ -10,7 +10,7 @@ import { NextRequest } from "next/server";
  * @param {string} url - The website URL (e.g., 'https://example.com')
  * @returns {Promise<number|null>} Number of pages found, or null if failed
  */
-export async function getSitemapPageCount(url: string): Promise<number | null> {
+async function getSitemapPageCount(url: string): Promise<number | null> {
     try {
         // Normalize URL
         const urlObj = new URL(url);
