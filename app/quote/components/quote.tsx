@@ -10,7 +10,6 @@ import {
     Code,
     Database,
     Globe,
-    Smartphone,
     Wrench,
 } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
@@ -20,6 +19,7 @@ import React from "react";
 import { Link } from "next-view-transitions";
 import { useAtom, useAtomValue } from "jotai";
 import { quoteAtom } from "../atoms/quoteAtom";
+import { Footer } from "@/components/footer";
 
 interface ServiceOption {
     id: string;
@@ -509,8 +509,8 @@ function QuoteCalculator() {
                             {quote.timeline < 1
                                 ? "Rush (+50%)"
                                 : quote.timeline > 1.5
-                                ? "Flexible (-10%)"
-                                : "Standard"}
+                                  ? "Flexible (-10%)"
+                                  : "Standard"}
                         </p>
                     </div>
                 </div>
@@ -818,7 +818,7 @@ export function Quote() {
                 onClick={scrollToBottom}
                 aria-label="Scroll to bottom"
                 className={cn(
-                    "fixed bottom-10 left-10 bg-forest-500 hover:bg-forest-600 text-white p-2 rounded-full aspect-square shadow-lg transition-all duration-300",
+                    "fixed lg:hidden bottom-10 left-10 bg-forest-500 hover:bg-forest-600 text-white p-2 rounded-full aspect-square shadow-lg transition-all duration-300",
                     showScrollButton
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4"
@@ -827,9 +827,7 @@ export function Quote() {
                 <ChevronDown className="w-6 h-6" />
             </button>
 
-            <p className="text-xs text-gray-500 text-center mt-4 lg:hidden">
-                © {new Date().getFullYear()} Zach Melendez
-            </p>
+            <Footer />
         </section>
     );
 }

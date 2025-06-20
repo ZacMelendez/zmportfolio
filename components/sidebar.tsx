@@ -2,7 +2,8 @@ import { Github } from "@/app/logos/Github";
 import { Mail, FileText } from "lucide-react";
 import { SocialLink } from "./social-link";
 import { ReactNode } from "react";
-import { Link } from "next-view-transitions";
+import Image from "next/image";
+import { Footer } from "./footer";
 
 interface SocialLinkConfig {
     href: string;
@@ -21,8 +22,8 @@ export function Sidebar() {
             <div className="flex-1 flex flex-col items-center justify-center">
                 <div className="space-y-6 lg:space-y-8 flex flex-col items-center text-center">
                     <div className="flex flex-col items-center gap-4 w-full">
-                        <img
-                            src="/zach_m.jpg"
+                        <Image
+                            src="/zach_m.webp"
                             className="w-[75%] aspect-square rounded-2xl border-2 border-forest-500 shadow-lg object-cover"
                             alt="Portrait of Zach Melendez"
                         />
@@ -45,15 +46,7 @@ export function Sidebar() {
                     </div>
                 </div>
             </div>
-            <span className="flex justify-center items-center gap-2 text-xs text-gray-500 text-center mt-4 lg:mt-0">
-                <p>© {new Date().getFullYear()} Zach Melendez</p>|
-                <Link
-                    href="/quote"
-                    className="hover:text-forest-400 transition-colors"
-                >
-                    View Pricing
-                </Link>
-            </span>
+            <Footer />
         </aside>
     );
 }

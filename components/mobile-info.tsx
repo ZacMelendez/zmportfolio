@@ -3,6 +3,7 @@
 import { Github } from "@/app/logos/Github";
 import { cn } from "@/app/utils";
 import { FileText, Mail } from "lucide-react";
+import Image from "next/image";
 import { memo } from "react";
 
 interface MobileInfoProps {
@@ -18,8 +19,8 @@ const MobileInfo = memo(function MobileInfo({ isCollapsed }: MobileInfoProps) {
                 }
             >
                 <div className="flex items-center gap-4 w-full">
-                    <img
-                        src="/zach_m.jpg"
+                    <Image
+                        src="/zach_m.webp"
                         className={cn(
                             "h-20 aspect-square rounded-xl border-2 border-forest-500 shadow-lg object-cover transition-all duration-300 ease-in-out",
                             isCollapsed && "h-12 rounded-md"

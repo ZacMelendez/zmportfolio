@@ -1,6 +1,7 @@
 import { cn } from "@/app/utils";
 import { ArrowRight } from "lucide-react";
 import { Link } from "next-view-transitions";
+import { Footer } from "./footer";
 
 const experienceItems: {
     title: string;
@@ -118,9 +119,7 @@ export function About() {
                 View My Projects
                 <ArrowRight className="w-4 h-4" />
             </Link>
-            <p className="text-xs text-gray-500 text-center mt-4 lg:hidden">
-                © {new Date().getFullYear()} Zach Melendez
-            </p>
+            <Footer />
         </section>
     );
 }

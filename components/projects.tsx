@@ -1,10 +1,10 @@
 "use client";
 
-import { cn } from "@/app/utils";
 import { useBorderEffect } from "@/app/utils/useBorderEffect";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
+import { Footer } from "./footer";
 
 type Project =
     | {
@@ -195,9 +195,7 @@ export function Projects() {
                     ))}
                 </div>
             ))}
-            <p className="text-xs text-gray-500 text-center mt-4 lg:hidden">
-                © {new Date().getFullYear()} Zach Melendez
-            </p>
+            <Footer />
         </section>
     );
 }
