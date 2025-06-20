@@ -2,6 +2,7 @@ import { Github } from "@/app/logos/Github";
 import { Mail, FileText } from "lucide-react";
 import { SocialLink } from "./social-link";
 import { ReactNode } from "react";
+import { Link } from "next-view-transitions";
 
 interface SocialLinkConfig {
     href: string;
@@ -44,9 +45,15 @@ export function Sidebar() {
                     </div>
                 </div>
             </div>
-            <p className="text-xs text-gray-500 text-center mt-4 lg:mt-0">
-                © {new Date().getFullYear()} Zach Melendez
-            </p>
+            <span className="flex justify-center items-center gap-2 text-xs text-gray-500 text-center mt-4 lg:mt-0">
+                <p>© {new Date().getFullYear()} Zach Melendez</p>|
+                <Link
+                    href="/quote"
+                    className="hover:text-forest-400 transition-colors"
+                >
+                    View Pricing
+                </Link>
+            </span>
         </aside>
     );
 }
