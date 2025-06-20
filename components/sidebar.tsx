@@ -22,13 +22,15 @@ export function Sidebar() {
             <div className="flex-1 flex flex-col items-center justify-center">
                 <div className="space-y-6 lg:space-y-8 flex flex-col items-center text-center">
                     <div className="flex flex-col items-center gap-4 w-full">
-                        <Image
-                            src="/zach_m.webp"
-                            className="w-[75%] aspect-square rounded-2xl border-2 border-forest-500 shadow-lg object-cover"
-                            alt="Portrait of Zach Melendez"
-                            width={200}
-                            height={200}
-                        />
+                        <figure className="overflow-hidden w-[75%] aspect-square rounded-2xl border-2 border-forest-500 shadow-lg object-cover">
+                            <Image
+                                src="/zach_m.webp"
+                                alt="Portrait of Zach Melendez"
+                                height={2049}
+                                width={1536}
+                                className="object-cover"
+                            />
+                        </figure>
                         <div className="flex items-center gap-3">
                             <div className="flex flex-col items-center">
                                 <h2 className="text-xl lg:text-2xl font-semibold text-white tracking-tight">

@@ -19,16 +19,20 @@ const MobileInfo = memo(function MobileInfo({ isCollapsed }: MobileInfoProps) {
                 }
             >
                 <div className="flex items-center gap-4 w-full">
-                    <Image
-                        src="/zach_m.webp"
+                    <figure
                         className={cn(
-                            "h-20 aspect-square rounded-xl border-2 border-forest-500 shadow-lg object-cover transition-all duration-300 ease-in-out",
+                            "overflow-hidden relative h-20 aspect-square rounded-xl border-2 border-forest-500 shadow-lg transition-all duration-300 ease-in-out",
                             isCollapsed && "h-12 rounded-md"
                         )}
-                        alt="Portrait of Zach Melendez"
-                        width={200}
-                        height={200}
-                    />
+                    >
+                        <Image
+                            src="/zach_m.webp"
+                            alt="Portrait of Zach Melendez"
+                            height={2049}
+                            width={1536}
+                            className="object-cover"
+                        />
+                    </figure>
                     <div className="flex-1 flex items-center gap-3">
                         <div className="flex flex-row items-center justify-between w-full">
                             <div className="flex flex-col">
