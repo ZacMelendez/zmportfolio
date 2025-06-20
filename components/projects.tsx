@@ -184,12 +184,15 @@ export function Projects() {
     );
 
     return (
-        <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-4 lg:space-y-6 pb-20 md:pb-10">
+        <section className="flex-1 overflow-y-auto p-4 lg:p-10 flex flex-col gap-4 lg:gap-6 pb-20 md:pb-10">
             <h2 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight">
                 Projects
             </h2>
             {[projectsWithImages, projectsWithoutImages].map((i, j) => (
-                <div key={j} className="grid sm:grid-cols-3 gap-4 lg:gap-6">
+                <div
+                    key={j}
+                    className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6"
+                >
                     {i.map((project) => (
                         <ProjectCard key={project.title} project={project} />
                     ))}

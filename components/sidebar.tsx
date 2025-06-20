@@ -50,7 +50,7 @@ export function Sidebar() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer inSidebar />
         </aside>
     );
 }
