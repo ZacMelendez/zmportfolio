@@ -26,6 +26,8 @@ const MobileInfo = memo(function MobileInfo({ isCollapsed }: MobileInfoProps) {
                             isCollapsed && "h-12 rounded-md"
                         )}
                         alt="Portrait of Zach Melendez"
+                        width={200}
+                        height={200}
                     />
                     <div className="flex-1 flex items-center gap-3">
                         <div className="flex flex-row items-center justify-between w-full">

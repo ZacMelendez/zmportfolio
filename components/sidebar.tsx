@@ -26,6 +26,8 @@ export function Sidebar() {
                             src="/zach_m.webp"
                             className="w-[75%] aspect-square rounded-2xl border-2 border-forest-500 shadow-lg object-cover"
                             alt="Portrait of Zach Melendez"
+                            width={200}
+                            height={200}
                         />
                         <div className="flex items-center gap-3">
                             <div className="flex flex-col items-center">
