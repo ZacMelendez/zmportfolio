@@ -55,7 +55,7 @@ export default async function RootLayout({
                 <body
                     className={`${inter.className} bg-gray-900 text-gray-300 lg:h-screen min-h-[600px] lg:overflow-y-scroll flex flex-col lg:flex-row`}
                 >
-                    <div className="flex-1 flex flex-col min-h-0">
+                    <div className="flex-1 flex flex-col min-h-screen">
                         <Suspense>
                             <CursorGlow />
                         </Suspense>
