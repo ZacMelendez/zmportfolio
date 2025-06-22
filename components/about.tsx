@@ -53,7 +53,7 @@ export function About() {
         <section className="flex-1 overflow-y-auto p-4 lg:p-10 space-y-6 lg:space-y-8 pb-20 md:pb-10">
             <div className="space-y-4">
                 <h2 className="text-3xl font-semibold text-white tracking-tight">
-                    Hi, I'm Zach - Full-Stack Software Engineer
+                    Hey, I'm Zach — a Full-Stack Software Engineer
                 </h2>
                 <div className="leading-relaxed text-gray-300 lg:w-3/4 flex flex-col gap-2">
                     <p>

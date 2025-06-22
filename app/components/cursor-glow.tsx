@@ -23,19 +23,14 @@ export const CursorGlow = () => {
         };
     }, []);
 
-    return (
+    return !isMobile ? null : (
         <div aria-hidden className="fixed inset-0 pointer-events-none">
             <div
                 className="absolute w-96 h-96 bg-forest-600/30 blur-3xl rounded-full animate-pulse"
                 style={{
-                    transform: `translate(${
-                        // Only apply mouse position on lg screens and up
-                        isMobile
-                            ? `${mousePosition.x - 192}px, ${
-                                  mousePosition.y - 192
-                              }px`
-                            : "-128px, -80px" // Fixed position for mobile
-                    })`,
+                    transform: `translate(${`${mousePosition.x - 192}px, ${
+                        mousePosition.y - 192
+                    }px`})`,
                     transition: "transform 0.2s ease-out",
                 }}
             />
