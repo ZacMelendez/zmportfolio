@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { CursorGlow } from "./components/cursor-glow";
 import { Suspense } from "react";
 import { Provider } from "jotai";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -67,6 +68,7 @@ export default async function RootLayout({
 
                     <Sidebar />
                 </body>
+                <GoogleAnalytics gaId="G-8S364MP8BH" />
             </html>
         </ViewTransitions>
     );
