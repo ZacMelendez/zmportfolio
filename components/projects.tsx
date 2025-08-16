@@ -143,6 +143,16 @@ export const projects: Project[] = [
         technologies: ["Next.JS", "TypeScript", "Supabase"],
     },
     {
+        title: "Tally",
+        description:
+            "Track your financial progress with Tally - a beautiful, secure personal net worth tracking app. Monitor assets, debts, and watch your wealth grow over time.",
+        year: "2025",
+        image: "/projects/tally.png",
+        linkUrl: "https://tally-blush.vercel.app",
+        repoUrl: "https://github.com/zacmelendez/tally",
+        technologies: ["TypeScript", "Firebase", "Fastify"],
+    },
+    {
         title: "Peadbo - Personal Advisory Board",
         description:
             "Assemble and manage a dream team to help you achieve your goals.",
@@ -164,7 +174,7 @@ export const projects: Project[] = [
         description:
             "A Discord bot that allowed users to connect their crypto wallets and interact with the bot.",
         year: "2022",
-        repoUrl: "https://github.com/ZacMelendez/hbdiscord",
+        repoUrl: "https://github.com/zacmelendez/hbdiscord",
         technologies: ["Node.JS", "TypeScript", "Discord.JS"],
     },
     {
@@ -172,7 +182,7 @@ export const projects: Project[] = [
         description:
             "A job scraper that scrapes job listings from several companies which I was hoping to work for and saves them to a database.",
         year: "2023",
-        repoUrl: "https://github.com/ZacMelendez/job-scraper-ui",
+        repoUrl: "https://github.com/zacmelendez/job-scraper-ui",
         technologies: ["Svelte", "TypeScript", "Python"],
     },
 ];
