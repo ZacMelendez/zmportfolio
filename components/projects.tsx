@@ -166,7 +166,8 @@ export const projects: Project[] = [
         description:
             "The American Correctional Association is a non-profit organization that provides training and certification for correctional professionals.",
         year: "2025",
-        linkUrl: "https://acawebsite.vercel.app",
+        image: "/projects/aca.png",
+        linkUrl: "https://aca.org",
         technologies: ["Next.JS", "TypeScript", "Prismic"],
     },
     {
