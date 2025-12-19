@@ -124,15 +124,15 @@ function ProjectCard({ project }: ProjectCardProps) {
 }
 
 export const projects: Project[] = [
-    {
-        title: "CheckMate",
-        description:
-            "Your intelligent pay period companion. Track income, manage bills, and stay on top of your finances with ease.",
-        year: "2025",
-        image: "/projects/checkmate.png",
-        linkUrl: "https://checkmate-phi.vercel.app/",
-        technologies: ["Next.JS", "TypeScript", "Supabase"],
-    },
+    // {
+    //     title: "CheckMate",
+    //     description:
+    //         "Your intelligent pay period companion. Track income, manage bills, and stay on top of your finances with ease.",
+    //     year: "2025",
+    //     image: "/projects/checkmate.png",
+    //     linkUrl: "https://checkmate-phi.vercel.app/",
+    //     technologies: ["Next.JS", "TypeScript", "Supabase"],
+    // },
     {
         title: "R6 Playbook",
         description:
@@ -142,16 +142,16 @@ export const projects: Project[] = [
         linkUrl: "https://r6playbook.com",
         technologies: ["Next.JS", "TypeScript", "Supabase"],
     },
-    {
-        title: "Tally",
-        description:
-            "Track your financial progress with Tally - a beautiful, secure personal net worth tracking app. Monitor assets, debts, and watch your wealth grow over time.",
-        year: "2025",
-        image: "/projects/tally.png",
-        linkUrl: "https://tally-blush.vercel.app",
-        repoUrl: "https://github.com/zacmelendez/tally",
-        technologies: ["TypeScript", "Firebase", "Fastify"],
-    },
+    // {
+    //     title: "Tally",
+    //     description:
+    //         "Track your financial progress with Tally - a beautiful, secure personal net worth tracking app. Monitor assets, debts, and watch your wealth grow over time.",
+    //     year: "2025",
+    //     image: "/projects/tally.png",
+    //     linkUrl: "https://tally-blush.vercel.app",
+    //     repoUrl: "https://github.com/zacmelendez/tally",
+    //     technologies: ["TypeScript", "Firebase", "Fastify"],
+    // },
     {
         title: "Peadbo - Personal Advisory Board",
         description:
