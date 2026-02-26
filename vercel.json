@@ -2,7 +2,7 @@
   "redirects": [
     { "source": "/", "destination": "/about", "permanent": false },
     {
-      "source": "/(?!(?:about|assets/)(?:$|/)).*",
+      "source": "/((?!(?:about|assets/)(?:$|/)).*)",
       "destination": "/about",
       "permanent": false
     }
