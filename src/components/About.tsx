@@ -81,7 +81,7 @@ export function About() {
                             key={index}
                             className={cn(
                                 "relative",
-                                index !== experienceItems.length - 1 && "pb-6"
+                                index !== experienceItems.length - 1 && "pb-6",
                             )}
                         >
                             <div className="absolute -left-7 top-1.5 w-3.5 h-3.5 rounded-full flex items-center justify-center">
