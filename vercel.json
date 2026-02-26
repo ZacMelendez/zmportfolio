@@ -1,5 +1,13 @@
 {
-    "rewrites": [
-        { "source": "/((?!assets/).*)", "destination": "/index.html" }
-    ]
+  "redirects": [
+    { "source": "/", "destination": "/about", "permanent": false },
+    {
+      "source": "/(?!(?:about|assets/)(?:$|/)).*",
+      "destination": "/about",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ]
 }
