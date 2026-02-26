@@ -11,13 +11,13 @@ import Projects from "./pages/Projects";
 function App() {
     return (
         <Router>
-            <div className="bg-gray-900 text-gray-300 lg:h-screen min-h-[600px] lg:overflow-y-scroll flex flex-col lg:flex-row">
-                <div className="flex-1 flex flex-col min-h-screen">
+            <div className="bg-gray-900 text-gray-300 lg:h-screen min-h-[600px] lg:overflow-y-scroll flex flex-col lg:flex-row w-screen">
+                <div className="flex-1 flex flex-col min-h-screen min-w-0 w-full">
                     <Suspense>
                         <CursorGlow />
                     </Suspense>
                     <Header />
-                    <div className="mt-52 lg:mt-0 overflow-y-auto z-40">
+                    <div className="mt-52 lg:mt-0 overflow-y-auto z-40 w-full flex-1">
                         <Provider>
                             <Routes>
                                 <Route path="/" element={<Home />} />

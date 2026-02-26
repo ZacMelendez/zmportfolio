@@ -102,7 +102,6 @@ body {
 }
 
 .content-section {
-    max-width: 48rem;
-    margin-left: 12rem;
-    padding-right: 24rem;
+    width: 100%;
+    max-width: none;
 }
