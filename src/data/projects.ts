@@ -37,6 +37,15 @@ export const projects: Project[] = [
         technologies: ["Next.JS", "TypeScript", "AWS Amplify"],
     },
     {
+        title: "Yardly",
+        description:
+            "Yardly is a CRM easily allowing you to manage your customers and leads.",
+        year: "2025",
+        image: "/projects/yardly.png",
+        linkUrl: "https://yardly-five.vercel.app/",
+        technologies: ["Next.JS", "TypeScript", "Prisma", "PostgreSQL"],
+    },
+    {
         title: "American Correctional Association",
         description:
             "The American Correctional Association is a non-profit organization that provides training and certification for correctional professionals.",
