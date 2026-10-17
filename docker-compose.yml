@@ -1,0 +1,74 @@
+name: zmelendez-portfolio
+
+services:
+  portfolio:
+    build: .
+    image: zmelendez-portfolio:latest
+    container_name: zmelendez-portfolio
+    networks: [default, apps]
+    mem_limit: 64m
+    labels:
+      # Public site: no authelia middleware.
+      - traefik.enable=true
+      - traefik.docker.network=apps
+      - traefik.http.routers.portfolio.rule=Host(`zmelendez.com`) || Host(`www.zmelendez.com`) || Host(`dev.zmelendez.com`)
+      - traefik.http.services.portfolio.loadbalancer.server.port=8080
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+  # img.zmelendez.com: /img/ and /originals/, via Traefik.
+  images:
+    build:
+      context: .
+      dockerfile: images/Dockerfile
+    image: zmelendez-images:latest
+    container_name: zmelendez-images
+    labels:
+      # Public: the site's photos. No authelia middleware.
+      - traefik.enable=true
+      - traefik.docker.network=apps
+      - traefik.http.routers.images.rule=Host(`img.zmelendez.com`)
+      - traefik.http.services.images.loadbalancer.server.port=8080
+    volumes:
+      # The full-size photos. Set IMAGES_DIR to a NAS share to keep them
+      # outside the project folder.
+      - ${IMAGES_DIR:-./images/originals}:/srv/images/originals:ro
+      - image-cache:/var/cache/images
+    depends_on:
+      - transformimgs
+    networks: [default, images, apps]
+    mem_limit: 64m
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+  # Only reachable from the images container.
+  transformimgs:
+    image: pixboost/transformimgs:latest
+    container_name: zmelendez-transformimgs
+    command: ["-disableSaveData=true", "-proc=2"]
+    # A 2560px AVIF encode peaks around 750 MB.
+    mem_limit: 1g
+    networks: [images]
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  images:
+    internal: true
+  apps:
+    external: true
+
+volumes:
+  image-cache:

@@ -1,0 +1,12 @@
+node_modules
+dist
+design
+e2e
+test-results
+playwright-report
+blob-report
+playwright.config.ts
+**/.DS_Store
+*.zip
+images/originals
+dist-server

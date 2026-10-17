@@ -1,0 +1,327 @@
+{
+  "kuwohi": {
+    "name": "Kuwohi",
+    "region": "Great Smoky Mountains, TN",
+    "coordinates": "35.562, -83.498",
+    "stats": [
+      {
+        "label": "Summit",
+        "value": "6,643 ft"
+      }
+    ],
+    "trips": [
+      {
+        "date": "Nov 2025",
+        "allTrails": "https://www.alltrails.com/explore/recording/morning-hike-at-mount-buckley-via-kuwohi-bypass-trail-ecbb7ff?u=i&sh=kgjtqb",
+        "stats": [
+          {
+            "label": "Route",
+            "value": "Kuwohi Trail"
+          },
+          {
+            "label": "Distance",
+            "value": "3.5 mi"
+          },
+          {
+            "label": "Gain",
+            "value": "873 ft"
+          },
+          {
+            "label": "Time",
+            "value": "2 hr 2 min"
+          }
+        ],
+        "lede": "Back in the Smokies, and frosted over at sunrise.",
+        "story": [
+          "A solo trip. I drove up Newfound Gap Road before sunrise and hiked to the tower through spruce covered in ice.",
+          "The valleys were full of cloud, so the ridges looked like islands. After, I kept going out to Andrews Bald while the frost burned off."
+        ],
+        "photos": [
+          {
+            "path": "kuwohi_nov_2025_2.jpeg",
+            "alt": "Sunrise over frosted spruce, with cloud filling the valleys",
+            "summary": "Sunrise from the top.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "kuwohi_nov_2025.jpeg",
+            "alt": "Stone steps climbing through rime-covered trees",
+            "summary": "The way up, through the frozen spruce.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "kuwohi_nov_2025_3.jpeg",
+            "alt": "A frosted spruce against a blue sky over the ridges",
+            "summary": "Mid-morning, once the frost started to melt.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "andrews_bald_nov_2025.jpeg",
+            "alt": "Golden grass on Andrews Bald, with cloud below the far ridges",
+            "summary": "Andrews Bald.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "forney_trail_nov_2025.jpeg",
+            "alt": "Autumn ridges fading into the distance under heavy clouds",
+            "summary": "The Forney Ridge Trail the evening before.",
+            "date": "Oct 2025"
+          }
+        ]
+      },
+      {
+        "date": "Nov 2024",
+        "allTrails": "https://www.alltrails.com/explore/custom-routes/copy-afternoon-hike-at-mt-collins-shelter-clingman-forney-trail-and-camp-68-8b3d0b7?u=i&sh=kgjtqb",
+        "stats": [
+          {
+            "label": "Route",
+            "value": "Forney Ridge Trail"
+          },
+          {
+            "label": "Distance",
+            "value": "6.1 mi"
+          },
+          {
+            "label": "Gain",
+            "value": "2,021 ft"
+          },
+          {
+            "label": "Est. time",
+            "value": "4-4.5 hr"
+          }
+        ],
+        "lede": "Backpacking with my brother.",
+        "story": [
+          "Up the tower for the view, then packs on and down the Forney Ridge Trail. We camped, and came back out along the ridge the next day."
+        ],
+        "photos": [
+          {
+            "path": "kuwohi_nov_2024.jpeg",
+            "alt": "Spruce and fir below a bank of white cloud over distant ridges",
+            "summary": "From the tower, before heading down.",
+            "date": "Nov 2024"
+          },
+          {
+            "path": "kuwohi_nov_2024_2.jpeg",
+            "alt": "Ridges under a deep blue sky, with clouds resting on the far peaks",
+            "summary": "The view east from the tower.",
+            "date": "Nov 2024"
+          },
+          {
+            "path": "forney_trail_nov_2024_2.jpeg",
+            "alt": "Two hikers with backpacks beside a wooden trail sign in the woods",
+            "summary": "Setting off at the Forney Ridge Trail junction.",
+            "date": "Nov 2024"
+          },
+          {
+            "path": "forney_trail_nov_2024.jpeg",
+            "alt": "Spruce-covered ridges under a cloudy sky",
+            "summary": "Back along Forney Ridge the next day.",
+            "date": "Nov 2024"
+          }
+        ]
+      }
+    ]
+  },
+  "hawksbill": {
+    "name": "Blue Ridge",
+    "region": "Blue Ridge Mountains, VA",
+    "stats": [],
+    "trips": [
+      {
+        "place": "Hawksbill",
+        "coordinates": "38.555, -78.395",
+        "allTrails": "https://www.alltrails.com/explore/recording/morning-hike-at-hawksbill-summit-via-appalachian-trail-521e296?u=i&sh=kgjtqb",
+        "date": "Nov 2025",
+        "stats": [
+          {
+            "label": "Summit",
+            "value": "4,051 ft"
+          },
+          {
+            "label": "Route",
+            "value": "Lower Hawksbill Trail"
+          },
+          {
+            "label": "Distance",
+            "value": "4.6 mi"
+          },
+          {
+            "label": "Gain",
+            "value": "1,089 ft"
+          },
+          {
+            "label": "Time",
+            "value": "2 hr 2 min"
+          }
+        ],
+        "lede": "Shenandoah's high point, just off Skyline Drive.",
+        "story": [
+          "Solo, early in the morning. I took the steep way up from Hawksbill Gap: switchbacks, then out onto the rocks by the observation platform.",
+          "With the leaves down, the views were open the whole way: the Shenandoah Valley to the west, and Skyline Drive along the crest like it is on this map."
+        ],
+        "photos": [
+          {
+            "path": "hawksbill_nov_2025_pano.jpeg",
+            "alt": "Panorama of the rocky summit and the ridges beyond",
+            "summary": "The summit rocks.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "hawksbill_nov_2025.jpeg",
+            "alt": "A rock ledge in the foreground with ridges fading into haze",
+            "summary": "From the ledge below the platform.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "hawksbill_nov_2025_2.jpeg",
+            "alt": "Boulders and bare trees at the summit in early morning light",
+            "summary": "Early light on the summit boulders.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "skyline_drive_nov_2025.jpeg",
+            "alt": "A stone wall along Skyline Drive above the valley",
+            "summary": "A Skyline Drive overlook on the way in.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "hawksbill_nov_2025_3.jpeg",
+            "alt": "A selfie on the summit rocks, with the Shenandoah Valley behind",
+            "summary": "On the summit just after sunrise.",
+            "date": "Nov 2025"
+          },
+          {
+            "path": "skyline_drive_nov_2025_2.jpeg",
+            "alt": "Trees and a stone wall along Skyline Drive above rust-colored ridges",
+            "summary": "Skyline Drive the evening before.",
+            "date": "Nov 2025"
+          }
+        ]
+      },
+      {
+        "place": "The Priest",
+        "date": "Nov 2021",
+        "allTrails": "https://www.alltrails.com/explore/custom-routes/crabtree-falls-priest-mountain-5e6f610?u=i&sh=kgjtqb",
+        "stats": [
+          {
+            "label": "Summit",
+            "value": "4,063 ft"
+          },
+          {
+            "label": "Route",
+            "value": "Crabtree Falls Trail"
+          },
+          {
+            "label": "Distance",
+            "value": "8.1 mi"
+          },
+          {
+            "label": "Gain",
+            "value": "3,097 ft"
+          },
+          {
+            "label": "Est. time",
+            "value": "6-6.5 hr"
+          }
+        ],
+        "lede": "Where the hiking started, with my brother and dad.",
+        "story": [
+          "An overnight on The Priest. We spent the afternoon on the granite ledge watching the light move across the ridges, and were back on the same rock for sunrise."
+        ],
+        "photos": [
+          {
+            "path": "priest_nov_2021.jpeg",
+            "alt": "A granite ledge above bare woods, with farmland spread out in the valley below",
+            "summary": "The ledge at midday, over the farms in the valley.",
+            "date": "Nov 2021"
+          },
+          {
+            "path": "priest_nov_2021_2.jpeg",
+            "alt": "Panorama of wooded ridges folding away under a streaked sky",
+            "summary": "The ridges in the afternoon light.",
+            "date": "Nov 2021"
+          },
+          {
+            "path": "priest_nov_2021_3.jpeg",
+            "alt": "Morning sun over a hazy valley, seen past dry goldenrod",
+            "summary": "Back on the ledge the next morning.",
+            "date": "Nov 2021"
+          },
+          {
+            "path": "img_0117.jpeg",
+            "alt": "Zach looking over Blue Ridge mountains after hike",
+            "summary": "Sitting on the peak after a long day of hiking",
+            "date": "Nov 1"
+          }
+        ]
+      }
+    ]
+  },
+  "chocorua": {
+    "name": "Chocorua",
+    "region": "White Mountains, NH",
+    "coordinates": "43.954, -71.273",
+    "stats": [
+      {
+        "label": "Summit",
+        "value": "3,490 ft"
+      }
+    ],
+    "trips": [
+      {
+        "date": "Aug 2022",
+        "allTrails": "https://www.alltrails.com/explore/custom-routes/champney-falls-trail-chocorua-ccd1daa?u=i&sh=kgjtqb",
+        "stats": [
+          {
+            "label": "Route",
+            "value": "Champney Falls Trail"
+          },
+          {
+            "label": "Distance",
+            "value": "7.1 mi"
+          },
+          {
+            "label": "Gain",
+            "value": "2,234 ft"
+          },
+          {
+            "label": "Est. time",
+            "value": "4.5-5 hr"
+          }
+        ],
+        "lede": "A granite summit, two dogs, and a scramble at the top.",
+        "story": [
+          "Up the Champney Falls Trail with my brother, my dad, his friend from work, and their two dogs. The falls were more of a trickle in August.",
+          "The last stretch is hand-over-hand scrambling on open ledge, and the dogs handled it better than I did. The About photo is from the top."
+        ],
+        "photos": [
+          {
+            "path": "chocorua_2025.webp",
+            "alt": "On Chocorua's summit with two dogs",
+            "summary": "The whole group on the summit.",
+            "date": "Aug 2022"
+          },
+          {
+            "path": "champney_falls_trail_oct_2022.jpeg",
+            "alt": "Water running down stepped granite under birch trees and ferns",
+            "summary": "Champney Falls, on the way up.",
+            "date": "Aug 2022"
+          },
+          {
+            "path": "chocorua_oct_2022.jpeg",
+            "alt": "Granite slabs in the foreground and green ridges under big clouds",
+            "summary": "From the summit, over the Sandwich Range.",
+            "date": "Aug 2022"
+          },
+          {
+            "path": "chocorua_oct_2022_2.jpeg",
+            "alt": "A bare granite ridge running down from the summit into the forest",
+            "summary": "The open ridge below the summit.",
+            "date": "Aug 2022"
+          }
+        ]
+      }
+    ]
+  }
+}

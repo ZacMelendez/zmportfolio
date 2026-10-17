@@ -1,0 +1,140 @@
+{
+  "profile": {
+    "name": "Zach Melendez",
+    "role": "Software engineer",
+    "company": "Skydance",
+    "location": "United States · Remote",
+    "aboutPhoto": "chocorua_2025.webp",
+    "email": "zach@zmelendez.com",
+    "github": "https://github.com/ZacMelendez",
+    "resume": "https://res.cloudinary.com/drmatz1gd/image/upload/v1708753008/public/Zach_M_-_Dev_Resume_dm6eso.pdf",
+    "spotify": "https://open.spotify.com/user/zacmelendez",
+    "headline": "I'm on the CBSSports.com front end team at Skydance. Before that, live game data tools and one login for our sports and news brands.",
+    "bio": [
+      "My brothers are developers. I studied mechanical engineering to pave my own path, but Python pulled me in anyway. Helping them on a side project taught me React, and lead me to where I am today.",
+      "At work, I'm known for taking ownership of projects and paying attention to the small details. Outside of it, I spend my time following Christ, playing games, listening to music, and hiking."
+    ],
+    "tagline": "Building for game day. Hiking on the off days."
+  },
+  "sections": {
+    "experience": {
+      "heading": "From live data to the *front end*",
+      "intro": "Data delivery, authentication, and now the CBSSports.com front end. Each one taught me a different part of how the site actually works."
+    },
+    "work": {
+      "heading": "Selected work",
+      "featuredLabel": "At Skydance"
+    },
+    "about": {
+      "heading": "I didn't plan on *software*"
+    },
+    "contact": {
+      "heading": "Have a *project* in mind?",
+      "intro": "I'm open to freelance work. If you've got a problem that needs a solid, fast solution, from the data model through to deploy, send me a note. Or just say hi.",
+      "cta": "Get in touch"
+    }
+  },
+  "experience": [
+    {
+      "title": "Full-Stack Software Engineer",
+      "company": "Skydance",
+      "formerly": "Paramount Global",
+      "period": "May 2023 - Present",
+      "current": true,
+      "points": [
+        "2023: Built CBS Sports Data & Delivery tools so operators could keep live event and player information accurate during games.",
+        "2024-2025: Designed and shipped unified auth and identity across CBS Sports, CBS News, SportsLine, 247Sports, and CollegeSportsLive.",
+        "2025-2026: Built a tool that generates sports graphics from our APIs and schedules, tags them, and uploads them to a CDN: 6,830 cards from 240 templates across 8 leagues.",
+        "2026: Building CBSSports.com frontend, including Fantasy Football, player pages, bowl predictions, and UFC rankings.",
+        "Stack across the role: Next.js, Symfony, GraphQL SuperGraph, PostgreSQL, MongoDB, Redis, AWS CDK, Docker, and Kubernetes."
+      ],
+      "summary": "Started on the tools that keep live game data right, then built one login across CBS Sports, CBS News, SportsLine, and more (14.8M login requests in 30 days). Now I'm on the CBSSports.com front end, moving pages like Fantasy Football onto our new design system."
+    },
+    {
+      "title": "IoT Development Engineer",
+      "company": "Henkel Corporation",
+      "period": "Apr 2021 - May 2023",
+      "points": [
+        "Proof-of-concept IoT systems: sensor data off industrial equipment, high-speed data acquisition, and remote management driven by that data. Python services in Docker throughout."
+      ],
+      "summary": "My first developer job. Proof-of-concept IoT systems that pulled sensor data off industrial equipment. None of it reached a customer, but it's where I learned Docker, hardware, and how these systems talk to each other."
+    }
+  ],
+  "volunteer": [],
+  "featuredWork": [
+    {
+      "title": "CBS Sports on the new design system",
+      "area": "CBS Sports",
+      "year": "2026",
+      "metric": {
+        "value": "30M",
+        "label": "Fantasy Football page views in 30 days"
+      },
+      "description": "Moving CBSSports.com pages off legacy Symfony templates and onto our new design system: Fantasy Football, player pages (10.5M views), bowl predictions (800K), and new UFC rankings.",
+      "tags": [
+        "Symfony",
+        "PHP",
+        "SASS"
+      ],
+      "href": "https://www.cbssports.com/fantasy/football/"
+    },
+    {
+      "title": "One login across five brands",
+      "area": "Identity platform",
+      "year": "2024 - 2025",
+      "metric": {
+        "value": "14.8M",
+        "label": "Login requests in 30 days"
+      },
+      "description": "One sign-in for CBS Sports, SportsLine, CBS News, 247Sports, and CollegeSportsLive, backed by GraphQL subgraphs. I designed it and shipped it. 99.9% success, 26 ms median on CBS Sports.",
+      "tags": [
+        "Next.js",
+        "GraphQL",
+        "Kubernetes"
+      ],
+      "href": "https://www.cbssports.com/login"
+    },
+    {
+      "title": "Live sports data tools",
+      "area": "CBS Sports Data & Delivery",
+      "year": "2023",
+      "metric": {
+        "value": "30 → 5",
+        "label": "Minutes to fix bad live game data"
+      },
+      "description": "When a vendor's live feed goes down mid-game, operators get alerted and can enter plays themselves or switch to a backup. I built the bulk fixes they asked for, so fixing 20+ games on a Saturday takes 3-5 minutes.",
+      "tags": [
+        "React",
+        "Typescript",
+        "AWS CDK"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "American Correctional Association",
+      "year": "2025",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Prismic"
+      ],
+      "description": "Rebuilt ACA.org on a headless CMS. Lots of back-and-forth on the designs, and a lot of time on caching so it loads fast.",
+      "href": "https://aca.org",
+      "image": "aca"
+    },
+    {
+      "title": "Yardly",
+      "year": "2025",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL"
+      ],
+      "description": "A proof-of-concept CRM for lawn care crews, built to see how far I could get letting Cursor take the wheel.",
+      "href": "https://yardly-five.vercel.app/",
+      "image": "yardly"
+    }
+  ]
+}

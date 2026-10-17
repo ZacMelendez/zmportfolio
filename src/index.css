@@ -1,0 +1,1005 @@
+/* Self-hosted variable fonts (Fontsource): bundled with hashed names, so no
+   render-blocking trip to Google. Fraunces keeps its optical-size axis. */
+@import "@fontsource-variable/fraunces/opsz.css";
+@import "@fontsource-variable/fraunces/opsz-italic.css";
+@import "@fontsource-variable/source-sans-3/wght.css";
+@import "@fontsource-variable/source-sans-3/wght-italic.css";
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #11130a;
+  --color-band: #202a19;
+  --color-olive: #434d2c;
+  --color-sage: #b6c494;
+  /* Accent for the few things that should catch the eye: highlighted words,
+     the field notes pins, the active marker. Sage stays the quiet one. */
+  --color-rust: #cc7a45;
+  --color-cream: #fafdf4;
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-body: "Source Sans 3 Variable", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-ink);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-sage) 45%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 3px;
+}
+
+/* Rest/peak opacities are variables so a map on a darker ground can lift
+   them. SvgTierPulse draws the pulse between them on a canvas beneath. */
+.svg-tier-pulse-tier {
+  opacity: var(--svg-tier-pulse-rest, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Trail button (see TrailButtons.tsx): outlined in cream, and once the pointer
+ * enters (`.is-compass`) the arrow turns into a compass in sage whose needle
+ * tracks the cursor via `--needle-angle`.
+ * ------------------------------------------------------------------------- */
+
+.trail-btn {
+  display: inline-flex;
+  width: min(100%, 16.5rem);
+  height: 3.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 16px 0 22px;
+  border: 1px solid rgb(250 253 244 / 0.25);
+  border-radius: 3px;
+  color: var(--color-cream);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    border-color 250ms ease,
+    background 250ms ease;
+}
+
+.trail-btn:hover,
+.trail-btn:focus-visible {
+  border-color: rgb(250 253 244 / 0.5);
+  background: rgb(250 253 244 / 0.04);
+}
+
+.trail-btn-icon {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.trail-btn-icon svg {
+  display: block;
+  width: 100%;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.trail-btn-arrow {
+  stroke: currentColor;
+  opacity: 0.6;
+  transform-origin: 12px 12px;
+  transition:
+    opacity 200ms ease,
+    transform 300ms ease;
+}
+
+/* Drawn in from the arrow's heading (east) rather than faded. */
+.trail-btn-ring {
+  stroke: var(--color-sage);
+  stroke-dasharray: 63;
+  stroke-dashoffset: 63;
+  transform-origin: 12px 12px;
+  transition: stroke-dashoffset 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Starts pointing east like the arrow, then swings to follow the cursor. */
+.trail-btn-needle {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 6px;
+  height: 16px;
+  background: linear-gradient(to bottom, var(--color-sage) 0 50%, var(--color-cream) 50%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  opacity: 0;
+  transform: rotate(var(--needle-angle, 90deg)) scale(0.4);
+  transition:
+    opacity 200ms ease,
+    transform 650ms cubic-bezier(0.2, 1.5, 0.45, 1);
+}
+
+.trail-btn.is-compass .trail-btn-arrow,
+.trail-btn:focus-visible .trail-btn-arrow {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.trail-btn.is-compass .trail-btn-ring,
+.trail-btn:focus-visible .trail-btn-ring {
+  stroke-dashoffset: 0;
+}
+
+.trail-btn.is-compass .trail-btn-needle {
+  opacity: 1;
+  transform: rotate(var(--needle-angle, 90deg));
+}
+
+/* No cursor to follow from the keyboard, so it settles on a fixed bearing. */
+.trail-btn:focus-visible:not(.is-compass) .trail-btn-needle {
+  opacity: 1;
+  transform: rotate(40deg);
+}
+
+/* ---------------------------------------------------------------------------
+ * Reveal (see Reveal.tsx), section labels (SectionLabel.tsx) and the mobile
+ * menu (Header.tsx). In the components layer so utilities can still size them.
+ * ------------------------------------------------------------------------- */
+
+@layer components {
+  :root {
+    --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal {
+    transition:
+      opacity 0.9s var(--ease-reveal) var(--reveal-delay, 0ms),
+      transform 1.1s var(--ease-reveal) var(--reveal-delay, 0ms);
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .reveal-fade {
+    opacity: 0;
+  }
+
+  .reveal-up.is-visible,
+  .reveal-fade.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* `appear` reveals (first screen): the same moves as keyframes that start
+     at first paint, so prerendered text needs no script to show. They start
+     at 0.01 rather than 0 opacity: Chrome never counts text first painted
+     fully transparent as the Largest Contentful Paint, which handed LCP to
+     the hero map's road label, drawn only once the script has run. */
+  .reveal-appear.reveal-fade {
+    animation: reveal-appear-fade 0.9s var(--ease-reveal) var(--reveal-delay, 0ms) both;
+  }
+
+  .reveal-appear.reveal-up {
+    animation: reveal-appear-up 1.1s var(--ease-reveal) var(--reveal-delay, 0ms) both;
+  }
+
+  .reveal-appear .reveal-mask-inner {
+    animation: reveal-appear-mask 1.1s var(--ease-reveal) var(--reveal-delay, 0ms) both;
+  }
+
+  @keyframes reveal-appear-fade {
+    from {
+      opacity: 0.01;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal-appear-up {
+    from {
+      opacity: 0.01;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes reveal-appear-mask {
+    from {
+      transform: translateY(calc(100% + 0.3em));
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  /* Clipped at the bottom edge only (with room for descenders), so ascenders
+     and italic overhangs still show while the text slides up into place. */
+  .reveal-mask {
+    clip-path: inset(-0.35em -0.35em -0.25em -0.35em);
+  }
+
+  .reveal-mask-inner {
+    display: block;
+    transform: translateY(calc(100% + 0.3em));
+    transition: transform 1.1s var(--ease-reveal) var(--reveal-delay, 0ms);
+  }
+
+  .reveal-mask.is-visible .reveal-mask-inner {
+    transform: none;
+  }
+
+  .reveal-clip > * {
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.12);
+    transition:
+      clip-path 1.3s var(--ease-reveal) var(--reveal-delay, 0ms),
+      transform 1.8s var(--ease-reveal) var(--reveal-delay, 0ms);
+  }
+
+  .reveal-clip.is-visible > * {
+    clip-path: inset(0);
+    transform: none;
+  }
+
+  /* Section label: number, a dashed trail out to a trail marker, name. */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .section-label-number {
+    color: var(--color-sage);
+  }
+
+  .section-label-text {
+    color: rgb(250 253 244 / 0.6);
+  }
+
+  .section-label-trail {
+    position: relative;
+    flex: none;
+    width: clamp(40px, 4vw, 64px);
+    height: 7px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgb(182 196 148 / 0.55) 0 5px,
+        transparent 5px 9px
+      )
+      left center / calc(100% - 9px) 1px no-repeat;
+  }
+
+  .section-label-trail::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    width: 7px;
+    height: 7px;
+    border: 1.5px solid var(--color-sage);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .section-label .section-label-number,
+  .section-label .section-label-text {
+    opacity: 0;
+    transition: opacity 0.8s var(--ease-reveal);
+  }
+
+  .section-label .section-label-text {
+    transition-delay: 0.45s;
+  }
+
+  /* Drawn with a clip, not scaleX, so the marker isn't squashed on the way. */
+  .section-label .section-label-trail {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.9s var(--ease-reveal) 0.1s;
+  }
+
+  .section-label.is-visible .section-label-number,
+  .section-label.is-visible .section-label-text {
+    opacity: 1;
+  }
+
+  .section-label.is-visible .section-label-trail {
+    clip-path: inset(0);
+  }
+
+  /* Menu toggle: contour lines fold away as the X turns in. */
+  .menu-toggle-contours,
+  .menu-toggle-close {
+    transform-origin: 12px 12px;
+    transition:
+      opacity 0.25s ease,
+      transform 0.45s var(--ease-reveal);
+  }
+
+  .menu-toggle-close {
+    opacity: 0;
+    transform: rotate(-45deg) scale(0.6);
+  }
+
+  .menu-toggle.is-open .menu-toggle-contours {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.6);
+  }
+
+  .menu-toggle.is-open .menu-toggle-close {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Mobile menu: fades in, then the items rise in one after another (--i). */
+  .mobile-menu {
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.3s ease,
+      visibility 0s linear 0.3s;
+  }
+
+  .mobile-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu-item {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s var(--ease-reveal),
+      transform 0.7s var(--ease-reveal);
+  }
+
+  .mobile-menu.is-open .mobile-menu-item {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(80ms + var(--i) * 55ms);
+  }
+
+  .mobile-menu .section-label-trail {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.7s var(--ease-reveal);
+  }
+
+  .mobile-menu.is-open .section-label-trail {
+    clip-path: inset(0);
+    transition-delay: calc(220ms + var(--i) * 55ms);
+  }
+
+  /* Reduced motion: everything is simply there. */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-up,
+    .reveal-fade {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-mask-inner,
+    .reveal-clip > * {
+      clip-path: none;
+      transform: none;
+    }
+
+    .section-label .section-label-number,
+    .section-label .section-label-text {
+      opacity: 1;
+    }
+
+    .section-label .section-label-trail,
+    .mobile-menu .section-label-trail {
+      clip-path: none;
+    }
+
+    .mobile-menu-item {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Field notes (see FieldNotes.tsx): each map's pin opens a drawer about the
+ * hike.
+ * ------------------------------------------------------------------------- */
+
+/* In a layer, so utilities like `md:hidden` and positions win. */
+@layer components {
+  .field-notes-badge {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .field-notes-pin {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 5px;
+    border: 1px solid rgb(250 253 244 / 0.2);
+    border-radius: 999px;
+    background: rgb(17 19 10 / 0.7);
+    color: var(--color-cream);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* A rust copy of the pin's text, badge and outline laid over it, revealed
+     by a circle that grows from where the pointer came in and shrinks to
+     where it left; FieldNotes.tsx sets `--ink-at` and `--ink-r`. */
+  .field-notes-pin-ink {
+    position: absolute;
+    inset: -1px;
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+    padding: inherit;
+    border: 1px solid var(--color-rust);
+    border-radius: inherit;
+    color: var(--color-rust);
+    pointer-events: none;
+    clip-path: circle(var(--ink-r, 0px) at var(--ink-at, 50% 50%));
+    transition: clip-path 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .field-notes-pin:focus-visible .field-notes-pin-ink {
+    clip-path: circle(150% at 50% 50%);
+  }
+
+  .field-notes-pin.is-snapping .field-notes-pin-ink {
+    transition: none;
+  }
+
+  /* A drawer from the right on wide screens, a sheet from below on phones. */
+  .field-notes {
+    --field-notes-from: translate(0, 100%);
+    margin: auto 0 0;
+    width: 100%;
+    max-width: none;
+    height: 88dvh;
+    max-height: none;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid rgb(67 77 44 / 0.8);
+    border-radius: 14px 14px 0 0;
+    background: var(--color-band);
+    color: var(--color-cream);
+    overscroll-behavior: contain;
+    transform: var(--field-notes-from);
+    transition:
+      transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+      overlay 450ms allow-discrete,
+      display 450ms allow-discrete;
+  }
+
+  @media (min-width: 640px) {
+    .field-notes {
+      --field-notes-from: translate(100%, 0);
+      margin: 0 0 0 auto;
+      width: min(40rem, 100vw);
+      height: 100dvh;
+      border-top: 0;
+      border-left: 1px solid rgb(67 77 44 / 0.8);
+      border-radius: 0;
+    }
+  }
+
+  .field-notes[open] {
+    transform: none;
+  }
+
+  @starting-style {
+    .field-notes[open] {
+      transform: var(--field-notes-from);
+    }
+  }
+
+  .field-notes::backdrop {
+    background: rgb(17 19 10 / 0);
+    transition:
+      background 450ms ease,
+      overlay 450ms allow-discrete,
+      display 450ms allow-discrete;
+  }
+
+  .field-notes[open]::backdrop {
+    background: rgb(17 19 10 / 0.65);
+  }
+
+  @starting-style {
+    .field-notes[open]::backdrop {
+      background: rgb(17 19 10 / 0);
+    }
+  }
+
+  .field-notes-panel {
+    min-height: 100%;
+    padding: 28px 24px 40px;
+  }
+
+  @media (min-width: 640px) {
+    .field-notes-panel {
+      padding: 40px 32px 48px;
+    }
+  }
+
+  .field-notes-track {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .field-notes-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .field-notes-slide {
+    width: 100%;
+    flex: none;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Full screen over the drawer, the photo as large as it fits. */
+  .field-notes-lightbox {
+    display: none;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-cream);
+    opacity: 0;
+    transition:
+      opacity 250ms ease,
+      overlay 250ms allow-discrete,
+      display 250ms allow-discrete;
+  }
+
+  .field-notes-lightbox[open] {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+  }
+
+  @starting-style {
+    .field-notes-lightbox[open] {
+      opacity: 0;
+    }
+  }
+
+  .field-notes-lightbox::backdrop {
+    background: rgb(10 11 6 / 0.94);
+  }
+
+  /* Sized as a container so the photo can fit itself to it before it loads.
+     Gestures are ours here (see usePanZoom), not the page's. */
+  .field-notes-lightbox-frame {
+    position: relative;
+    container-type: size;
+    touch-action: none;
+  }
+
+  .field-notes-lightbox-frame img {
+    cursor: zoom-in;
+  }
+
+  /* Zoomed, the photo spills past the frame: clip it there, and drag it. */
+  .field-notes-lightbox-frame[data-zoomed] {
+    overflow: hidden;
+  }
+
+  .field-notes-lightbox-frame[data-zoomed] img {
+    cursor: grab;
+  }
+
+  .field-notes-lightbox-frame[data-panning] img {
+    cursor: grabbing;
+  }
+
+  /* How to zoom, shown briefly over the foot of the photo. */
+  .field-notes-lightbox-hint {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    translate: -50% 0;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: rgb(17 19 10 / 0.7);
+    color: color-mix(in srgb, var(--color-cream) 80%, transparent);
+    font-size: 0.7rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    animation: field-notes-hint 3.5s ease 0.4s;
+  }
+
+  .field-notes-lightbox-frame[data-zoomed] .field-notes-lightbox-hint {
+    display: none;
+  }
+
+  .field-notes-hint-mouse {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .field-notes-hint-touch {
+      display: none;
+    }
+
+    .field-notes-hint-mouse {
+      display: inline;
+    }
+  }
+
+  @keyframes field-notes-hint {
+    10%,
+    80% {
+      opacity: 1;
+    }
+  }
+
+  /* The thumbnails' "opens bigger" badge, brighter on hover. */
+  .field-notes-expand {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    display: flex;
+    height: 1.75rem;
+    width: 1.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgb(17 19 10 / 0.65);
+    color: var(--color-cream);
+    opacity: 0.75;
+    transition:
+      opacity 200ms ease,
+      scale 200ms ease;
+  }
+
+  .field-notes-zoomable:hover .field-notes-expand,
+  .field-notes-zoomable:focus-visible .field-notes-expand {
+    opacity: 1;
+    scale: 1.1;
+  }
+
+  .field-notes-lightbox-photo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 24px 80px rgb(0 0 0 / 0.6);
+    user-select: none;
+    animation: field-notes-photo-in 300ms ease;
+  }
+
+  /* Known shape (see lightboxProps): as large as fits, before the photo loads. */
+  .field-notes-lightbox-photo[style*="--photo-ratio"] {
+    width: min(100cqw, 100cqh * var(--photo-ratio));
+    height: auto;
+  }
+
+  @keyframes field-notes-photo-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  /* Phones: off the sides of the photo, so swipe is the main way through. */
+  .field-notes-lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  .field-notes-lightbox-arrow button {
+    background: rgb(17 19 10 / 0.6);
+  }
+
+  .field-notes-photo-empty {
+    display: flex;
+    aspect-ratio: 4 / 3;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgb(182 196 148 / 0.35);
+    border-radius: 2px;
+    color: rgb(182 196 148 / 0.7);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* The page stays put behind an open drawer. */
+  html:has(.field-notes[open]) {
+    overflow: hidden;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Current-role dot (see Experience.tsx): a rust ring breathes out from it.
+ * Reduced motion leaves just the dot (the global rule above stops it).
+ * ------------------------------------------------------------------------- */
+
+@layer components {
+  .current-pulse {
+    position: relative;
+  }
+
+  .current-pulse::after {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--color-rust);
+    content: "";
+    animation: current-pulse 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  @keyframes current-pulse {
+    from {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    70%,
+    to {
+      opacity: 0;
+      transform: scale(3.2);
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Field notes trips (see TripTabs in FieldNotes.tsx): a tab per visit, the
+ * active one underlined in rust like the carousel's active dot.
+ * ------------------------------------------------------------------------- */
+
+@layer components {
+  .field-notes-trips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    margin-top: 6px;
+  }
+
+  .field-notes-trip-tab {
+    position: relative;
+    padding: 6px 0 10px;
+    color: rgb(250 253 244 / 0.55);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: color 200ms ease;
+  }
+
+  /* Outlined like the trail buttons; the arrow nudges out on hover. */
+  .field-notes-alltrails {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 9px 14px 9px 12px;
+    border: 1px solid rgb(250 253 244 / 0.25);
+    border-radius: 3px;
+    color: var(--color-cream);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      border-color 250ms ease,
+      background 250ms ease;
+  }
+
+  .field-notes-alltrails:hover,
+  .field-notes-alltrails:focus-visible {
+    border-color: rgb(250 253 244 / 0.5);
+    background: rgb(250 253 244 / 0.04);
+  }
+
+  .field-notes-alltrails-arrow {
+    width: 14px;
+    height: 14px;
+    opacity: 0.6;
+    transition:
+      opacity 200ms ease,
+      transform 250ms ease;
+  }
+
+  .field-notes-alltrails:hover .field-notes-alltrails-arrow,
+  .field-notes-alltrails:focus-visible .field-notes-alltrails-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  /* Over the date, for a note that spans more than one peak. */
+  .field-notes-trip-place {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--color-sage);
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-align: left;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .field-notes-trip-tab:hover {
+    color: var(--color-cream);
+  }
+
+  .field-notes-trip-tab::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--color-rust);
+    content: "";
+    transform: scaleX(0);
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .field-notes-trip-tab[aria-selected="true"] {
+    color: var(--color-cream);
+  }
+
+  .field-notes-trip-tab[aria-selected="true"]::after {
+    transform: scaleX(1);
+  }
+
+  .field-notes-trip {
+    animation: field-notes-trip-in 400ms ease both;
+  }
+
+  @keyframes field-notes-trip-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Contact ridges' peak tags (see ContactRidges.tsx): a cream dot on the
+ * summit, a dotted trail hanging below it, and a pin-style label at its foot
+ * that leans toward the middle (`data-align`). They fade in as their ridge
+ * settles (`--ridge-rest` falls to 0).
+ * ------------------------------------------------------------------------- */
+
+@layer components {
+  .peak-tag {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: calc(1 - var(--ridge-rest, 0) * 2.5);
+  }
+
+  .peak-tag::before {
+    position: absolute;
+    top: -2.5px;
+    left: -2.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--color-cream);
+    content: "";
+  }
+
+  .peak-tag::after {
+    position: absolute;
+    top: 6px;
+    left: -1.5px;
+    width: 3px;
+    height: 22px;
+    background: radial-gradient(
+        circle,
+        rgb(182 196 148 / 0.8) 0.75px,
+        transparent 1.1px
+      )
+      center top / 3px 4px repeat-y;
+    content: "";
+  }
+
+  .peak-tag-label {
+    position: absolute;
+    top: 30px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 4px 10px;
+    border: 1px solid rgb(250 253 244 / 0.2);
+    border-radius: 999px;
+    background: rgb(17 19 10 / 0.7);
+    color: var(--color-cream);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .peak-tag[data-align="center"] .peak-tag-label {
+    left: 0;
+    translate: -50% 0;
+  }
+
+  .peak-tag[data-align="start"] .peak-tag-label {
+    left: -14px;
+  }
+
+  .peak-tag[data-align="end"] .peak-tag-label {
+    right: -14px;
+  }
+
+  .peak-tag-elevation {
+    color: var(--color-sage);
+    letter-spacing: 0.08em;
+  }
+}

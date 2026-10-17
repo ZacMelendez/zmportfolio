@@ -1,0 +1,13 @@
+node_modules
+dist
+*.local
+.DS_Store
+test-results
+playwright-report
+blob-report
+
+# Full-size site images live on the NAS, not in the repo.
+images/originals/*
+!images/originals/.gitkeep
+dist-server
+
